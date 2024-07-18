@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+  test-task.api:
+    container_name: test-task.api
+    build:
+      context: ./backend/src
+      dockerfile: ./BO.TestTask.Api/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ASPNETCORE_URLS: "http://+:5000"
+    ports:
+      - 5000:5000
+    restart: always
+    depends_on:
+      - test-task.database
+  test-task.database:
+    container_name: test-task.database
+    image: mcr.microsoft.com/mssql/server:latest
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Password1!
+    ports:
+      - 1433:1433
