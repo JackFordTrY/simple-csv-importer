@@ -1,4 +1,4 @@
-﻿
+﻿using BO.TestTask.Application.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
